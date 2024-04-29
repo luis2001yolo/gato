@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Botón que cambia de color</title>
+    <style>
+        /* Estilos para la página */
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+        }
+
+        /* Estilos para el botón */
+        #colorButton {
+            width: 100px;  /* Ancho y altura iguales para hacer el botón circular */
+            height: 100px;
+            border-radius: 50%;  /* Bordes redondeados para un círculo perfecto */
+            border: none;
+            cursor: pointer;
+            transition: background-color 1s;
+        }
+
+        /* Estilos para la imagen del gato */
+        #catImage {
+            display: none;
+            width: 300px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botón en el centro de la página -->
+    <div id="container">
+        <button id="colorButton" onclick="showCatImage()"></button> <!-- Botón sin texto -->
+        <!-- Imagen del gato -->
+        <img id="catImage" src="https://i.pinimg.com/736x/f1/59/6d/f1596d493ab8ba17c4f091780dc4929f.jpg" alt="Gato riéndose" />
+    </div>
+
+    <!-- JavaScript para manejar la funcionalidad -->
+    <script>
+        // Define los colores RGB
+        const colors = ['red', 'green', 'blue'];
+        let currentColorIndex = 0;
+
+        // Función para cambiar el color del botón entre rojo, verde y azul
+        function changeColor() {
+            const button = document.getElementById('colorButton');
+            // Cambia el color del botón al siguiente color en la lista
+            button.style.backgroundColor = colors[currentColorIndex];
+            // Incrementa el índice para el próximo color
+            currentColorIndex = (currentColorIndex + 1) % colors.length;
+        }
+
+        // Función para mostrar la imagen del gato
+        function showCatImage() {
+            // Ocultar el botón circular
+            const button = document.getElementById('colorButton');
+            button.style.display = 'none';
+
+            // Mostrar la imagen del gato
+            const catImage = document.getElementById('catImage');
+            catImage.style.display = 'block';
+        }
+
+        // Cambiar el color del botón cada 1 segundo
+        setInterval(changeColor, 1000);
+    </script>
+</body>
+</html>
